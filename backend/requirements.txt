@@ -1,0 +1,22 @@
+# Backend
+fastapi==0.110.0
+uvicorn[standard]==0.27.1
+sqlalchemy==2.0.27
+asyncpg==0.29.0
+alembic==1.13.1
+pydantic==2.6.1
+pydantic-settings==2.1.0
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
+python-multipart==0.0.9
+PyPDF2==3.0.1
+python-dateutil==2.8.2
+pytest==8.3.3
+pytest-asyncio==0.24.0
+httpx==0.27.2
+aiosqlite==0.20.0
+
+# AI provider abstraction — swap impl without touching app code
+# liteLLM-based examples:
+# litellm==1.3.0
