@@ -1,0 +1,29 @@
+### Runtime / build artifacts
+node_modules/
+.next/
+out/
+*.log
+*.db
+uploads/
+.DS_Store
+Thumbs.db
+
+### Environment
+.env
+.env.local
+.env.*.local
+*.pem
+
+### Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+### IDE
+.vscode/
+.idea/
+*.swp
+*.swo
