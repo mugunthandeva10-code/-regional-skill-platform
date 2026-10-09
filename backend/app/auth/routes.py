@@ -74,8 +74,23 @@ async def update_me(
     user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ):
-    for field, value in update.model_dump(exclude_unset=True).items():
+    if update.role is not None and update.role not in ("student", "admin"):
+        raise HTTPException(status_code=400, detail="role must be student or admin")
+
+    if update.email is not None:
+        conflict = await db.execute(
+            select(User).where(User.email == update.email.lower(), User.id != user.id)
+        )
+        if conflict.scalar_one_or_none():
+            raise HTTPException(status_code=400, detail="Email already registered")
+        user.email = update.email.lower()
+
+    if update.password is not None:
+        user.hashed_password = hash_password(update.password)
+
+    for field, value in update.model_dump(exclude_unset=True, exclude={"email", "password"}).items():
         setattr(user, field, value)
+
     await db.commit()
     await db.refresh(user)
     return UserOut.model_validate(user)

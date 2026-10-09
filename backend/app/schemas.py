@@ -44,6 +44,9 @@ class LoginRequest(ORMModel):
 
 class UserUpdate(ORMModel):
     full_name: Optional[str] = Field(default=None, min_length=1, max_length=255)
+    email: Optional[Email] = None
+    password: Optional[str] = Field(default=None, min_length=6)
+    role: Optional[str] = None
     college: Optional[str] = None
     department: Optional[str] = None
     degree: Optional[str] = None

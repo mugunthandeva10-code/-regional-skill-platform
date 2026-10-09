@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 60
 
-    database_url: str = "postgresql+asyncpg://postgres:postgres@127.0.0.1:5432/skill_platform"
+    database_url: str = "sqlite+aiosqlite:///./hosted.db"
 
     openai_base_url: str | None = None
     openai_api_key: str | None = None
