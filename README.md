@@ -1,1 +1,1 @@
-# -regional-skill-platform
+# regional-skill-platform
